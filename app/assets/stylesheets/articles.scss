@@ -1,3 +1,19 @@
 // Place all the styles related to the articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.articles{
+  padding: 50px 0;
+  .article-add{
+    padding: 20px 0;
+  }
+  .article-list{
+    padding: 15px 0;
+  }
+}
+
+#editor {
+  width: 100%;
+  height: 500px;
+}
