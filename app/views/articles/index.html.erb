@@ -1,4 +1,9 @@
-<h1 class='text-center'>Wiki</h1>
+<!-- <h1 class='text-center'>Wiki</h1> -->
+
+<%# @articles.map do |article| %>
+  <%# article.title = highlight(article.title, params[:q]).html_safe %>
+<%# end %>
+
 <div class="container">
   <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
@@ -10,7 +15,7 @@
         <% @articles.each do |article| %>
           <li class="article-list">
             <div class="col-sm-10 text-left">
-              <%= link_to article.title, article_path(article) %>
+              <%= link_to highlight(article.title, params[:q]), article_path(article) %>
             </div>
             <div class="col-sm-2 text-right">
               <% if current_user %>

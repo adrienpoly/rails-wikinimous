@@ -6,6 +6,13 @@ before_action :authorize, only: [:edit, :new, :update, :create, :destroy]
     @articles = Article.all
   end
 
+  def search
+    # @articles = Article.last(2)
+    @articles = Article.where("articles.title LIKE ?", "%#{params[:q]}%")
+
+    render :index
+  end
+
   def show
 
   end
