@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
     if user.save
       session[:user_id] = user.id
-      redirect_to :home, notice: 'Account created successfully'
+      redirect_to articles_path, notice: 'Account created successfully'
     else
       flash[:error] = 'An error occured!'
       render 'new'
