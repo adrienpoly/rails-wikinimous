@@ -8,7 +8,7 @@ before_action :authorize, only: [:edit, :new, :update, :create, :destroy]
 
   def search
     # @articles = Article.last(2)
-    @articles = Article.where("articles.title LIKE ?", "%#{params[:q]}%")
+    @articles = Article.where("articles.title or articles.content LIKE ?", "%#{params[:q]}%")
 
     render :index
   end

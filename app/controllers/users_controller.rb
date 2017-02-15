@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect_to articles_path, notice: 'Account created successfully'
     else
-      flash[:error] = 'An error occured!'
+      flash[:alert] = 'An error occured!'
       render 'new'
     end
   end
