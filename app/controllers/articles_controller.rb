@@ -3,14 +3,20 @@ before_action :set_article, only: [:show, :edit, :update, :destroy]
 before_action :authorize, only: [:edit, :new, :update, :create, :destroy]
 
   def index
-    @articles = Article.all
+    @articles = Article.first(20)
   end
 
   def search
     # @articles = Article.last(2)
-    @articles = Article.where("articles.title or articles.content LIKE ?", "%#{params[:q]}%")
+    start_time = Time.now()
+    @articles_where = Article.where("articles.content LIKE ?", "%#{params[:q]}%")
+    @time_where = (( Time.now() - start_time ) * 1000 ).round(2)
 
-    render :index
+    start_time = Time.now()
+    @articles = Article.search(params[:q])
+    @time_pg = (( Time.now() - start_time ) * 1000 ).round(2)
+
+    # render :index
   end
 
   def show

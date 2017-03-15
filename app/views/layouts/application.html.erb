@@ -14,14 +14,29 @@
   </head>
 
   <body>
+
     <%= render 'shared/navbar' %>
+
     <%= render 'shared/flashes' %>
+
     <div class="container">
-
-
       <%= yield %>
-      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-      <%= yield(:after_js) %>
     </div>
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= yield(:after_js) %>
+
+    <script>
+      $(document).ready(function(){
+        $('#search-autocomplete').autocomplete({
+          source: '/words',
+        // dataType: 'json',
+          delay: 50,
+          appendTo: '.search-form'
+          // select: $.proxy(this._select, this)
+        });
+      });
+    </script>
   </body>
 </html>
