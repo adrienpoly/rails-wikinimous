@@ -9,7 +9,7 @@
 100.times do |iteration|
   article = Article.new
   article.title = Faker::Lorem.sentence
-  article.content = Faker::Lorem.paragraph(50)
-  article.save
+  article.content = Faker::Lorem.paragraph(500)
+  article.save!
 
 end
